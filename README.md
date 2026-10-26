@@ -23,8 +23,7 @@ when each command runs.
 ### Clone the repository
 
 ```sh
-git clone https://github.com/ke2hni/DVSwitch-Mods-ASL-Mode-Switch.git
-cd DVSwitch-Mods-ASL-Mode-Switch
+git clone https://github.com/ke2hni/DVSwitch-Mods-ASL-Mode-Switch.git && cd DVSwitch-Mods-ASL-Mode-Switch
 ```
 
 ### Or download the GitHub source ZIP
