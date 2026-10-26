@@ -1,0 +1,12 @@
+The reversible way is a systemd drop-in override, rather than editing the packaged service file:
+sudo systemctl edit webproxy.service
+
+Add:
+[Service]
+Environment=NODE_PATH=/usr/share/nodejs
+
+Save and exit, then run:
+sudo systemctl daemon-reload
+sudo systemctl reset-failed webproxy.service
+sudo systemctl start webproxy.service
+sudo systemctl status webproxy.service --no-pager -l
