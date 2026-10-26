@@ -209,18 +209,12 @@ sudo ./repair-dvswitch-txt-updater.sh --install
 **What it fixes:** Routes Analog_Bridge remote-control commands to a live TLV
 UDP listener and selects the active listener when leaving ASL mode. This
 addresses the stale-port behavior observed with `dvswitch.sh` 1.6.2 and 1.6.3.
-The repair changes only `/opt/MMDVM_Bridge/dvswitch.sh`; it does not restart
-Analog_Bridge or other services.
+It patches `/opt/MMDVM_Bridge/dvswitch.sh`, saves a protected backup under
+`/var/backups/dvswitch-mods/asl-mode-switch`, and does not restart services.
 
-Run the check first, then install on each test node after updating the repository:
-
-```bash
-sudo ./manage-dvswitch-mods.sh --check dvswitch-asl-mode-switch
-sudo ./manage-dvswitch-mods.sh --install dvswitch-asl-mode-switch
-```
-
-The standalone repair supports the same operations. It creates a protected,
-timestamped backup and can restore that backup by name:
+This repair is a standalone script. It is not registered in the
+DVSwitch-Mods manager and does not run through its Install All option. Run it
+directly on a test node after updating the repository:
 
 ```bash
 sudo ./repair-dvswitch-asl-mode-switch.sh --check
@@ -228,10 +222,10 @@ sudo ./repair-dvswitch-asl-mode-switch.sh --install
 sudo ./repair-dvswitch-asl-mode-switch.sh --restore install-YYYYMMDD-HHMMSS
 ```
 
-The installer accepts `dvswitch.sh` versions 1.6.2 and 1.6.3 and refuses
-unknown or partially modified structures. It is safe to rerun. Rebooting or
-restarting a service is not required for the shell-script change to take
-effect.
+The script creates a protected, timestamped backup, is safe to rerun, and
+refuses unknown or partially modified structures. It supports `dvswitch.sh`
+versions 1.6.2 and 1.6.3. Rebooting or restarting a service is not required
+for the shell-script change to take effect.
 
 ### P25 audio-announcement repair
 

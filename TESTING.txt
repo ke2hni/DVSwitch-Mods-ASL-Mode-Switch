@@ -5,12 +5,14 @@ ASL mode-switch repair (test nodes only):
 
 cd ~/DVSwitch-Mods
 PYTHONDONTWRITEBYTECODE=1 python3 tests/test-dvswitch-asl-mode-switch-patcher.py
-PYTHONDONTWRITEBYTECODE=1 python3 tests/test-manager-structure.py
-sudo ./manage-dvswitch-mods.sh --check dvswitch-asl-mode-switch
+sudo ./repair-dvswitch-asl-mode-switch.sh --check
 
-If the checks pass, install on pi4test first:
+If the checks pass, install the standalone repair on pi4test first:
 
-sudo ./manage-dvswitch-mods.sh --install dvswitch-asl-mode-switch
+sudo ./repair-dvswitch-asl-mode-switch.sh --install
+
+This repair is not registered with `manage-dvswitch-mods.sh` and is not
+included in its Install All operation.
 
 Switch from ASL to P25, NXDN, DMR, D-Star, YSF, and STFU using the normal
 terminal command and dashboard controls. Confirm each reported mode and
