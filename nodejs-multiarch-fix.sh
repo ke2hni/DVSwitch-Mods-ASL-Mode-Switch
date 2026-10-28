@@ -1,4 +1,7 @@
 #!/bin/sh
+# Version: 7
+# Date: 2026-10-28
+
 set -eu
 
 PROGRAM=${0##*/}
